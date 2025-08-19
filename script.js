@@ -39,7 +39,7 @@ const afficherheure =  async ()=>{
   
     })
 }
-// afficherheure()
+afficherheure()
 setInterval(afficherheure,1000)
 // afficher l'heure---------------------------------
 
@@ -434,3 +434,4 @@ document.querySelector(".fa-sun").addEventListener('click',()=>{
 }
 meteofonction()
 setInterval(meteofonction,3600000);
+
