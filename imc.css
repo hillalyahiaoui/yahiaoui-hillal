@@ -1,0 +1,140 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+}
+.app{
+    width: 320px;
+    height: 400px;
+    padding: 10px;
+    border: 2px solid orange;
+    border-radius: 15px;
+    background-color: pink;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+input{
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: gainsboro;
+    margin: 20px 5px;
+   max-width: 150px;
+   font-weight: bolder;
+   font-size: 1.2rem;
+}
+input::placeholder{
+    font-size: 0.8rem;
+    color: blue;
+    font-weight: normal;
+
+}
+
+#btn{
+    padding: 10px;
+    border-radius: 15px;
+    width: 100px;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    outline: none;
+    font-size: larger;
+    border: none;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+#btn:hover{
+    background-color: darkblue;
+    color: rgb(160, 111, 111);
+    transition: 0.6s ease-in-out;
+    transform: scale(1.1) translateX(-50%);
+
+}
+
+h2{
+    text-align: center;
+    text-shadow: 3px 2px 1px rgba(37, 33, 33, 0.637);
+    font-weight: bolder;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 10px;
+    letter-spacing: 2px;
+}
+hr{
+    height: 5px;
+    width: 100%;
+    background-color: honeydew;
+}
+h3{
+    padding: 10px;
+    margin: 20px;
+
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: goldenrod;
+}
+
+p{
+    margin-top: 50px;
+    opacity: 1;
+    
+    text-align: center;
+    
+    
+}
+
+@keyframes anim2{
+    to{
+        
+      transform: translateX(0);
+      
+        opacity: 1;
+    }
+}
+
+
+.vert{
+    
+   
+    padding: 5px;
+    color: whitesmoke;
+    font-size: 1rem;
+   transform: translateX(-100px);
+    animation: anim2 2s forwards;
+}
+
+.balle{
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    background-color:whitesmoke;
+    animation: anim1 9s forwards;
+}
+ @keyframes anim1{
+     to{
+         transform: translateY(500px);
+     }
+ }
+ .img img{
+    border-radius: 100%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border: 3px solid rgb(68, 68, 238) ;
+}

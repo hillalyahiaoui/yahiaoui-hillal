@@ -1,0 +1,117 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: cadetblue;
+    font-family:cursive;
+}
+.app{
+    background-color: bisque;
+    position: absolute;
+    top:50px;
+    left: 50%;
+    height: 350px;
+    width: 320px;
+    transform: translatex(-50%);
+    padding: 10px;
+    border-radius: 10px;
+   
+}
+#affichage{
+    background-color: blanchedalmond;
+    width: 95%;
+    padding: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:bisque;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 1.5em;
+    letter-spacing: 1px;
+}
+.ronge{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+#rang{
+    background-color: hotpink;
+    height: 20px;
+    color: hotpink;
+    cursor: pointer;
+    margin-top: 10px;
+    
+}
+#rongetext{
+    border: none;
+    outline: none;
+    width: 20px;
+    background-color:bisque;
+}
+.box{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+label{
+    padding: 10px;
+    background-color: lavender;
+    border-radius: 10px;
+    margin: 15px;
+    cursor: pointer;
+}
+input[type="checkbox"]{
+    display: none;
+}
+input[type="checkbox"]:checked+label{
+    transform: scale(1.4);
+    background-color: blue;
+    color:white;
+    animation: anim 1.5s infinite;
+  
+}
+@keyframes anim{
+    
+   
+}
+#btn{
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 60px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: skyblue;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.6s;
+    font-size: 1.1em;
+
+}
+#btn:hover{
+    background-color: darkblue;
+    color: goldenrod;
+}
+#affichage::placeholder{
+    color: whitesmoke;
+    font-size: 1.2rem;
+    background-color:cadetblue;
+    padding: 5px;
+}
+
+.img img{
+    border-radius: 100%;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: 3px solid rgb(68, 68, 238) ;
+}
+.pp{
+    background-color: rgb(202, 189, 189);
+    padding: 5px;
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
