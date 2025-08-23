@@ -3,7 +3,7 @@ const app = document.querySelector('.app')
 const nav = document.querySelector('nav')
 // affichage en plex de photo galerie
 const bloc = document.querySelector('.bloc');
-const tab = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.jpg","10.jpg","11.jpg","12.jpg","13.jpg","14.jpg","15.jpg","16.jpg","17.jpg","18.jpg","19.jpg","20.jpg"]
+const tab = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg","9.JPG","10.jpg","11.jpg","12.jpg","13.JPJ","14.JPG","15.JPG","16.JPG","17.jpg","18.jpg","19.jpg","20.jpg"]
 function blo(){
     for (let i = 0; i < tab.length; i++) {
     
@@ -438,3 +438,4 @@ document.querySelector(".fa-sun").addEventListener('click',()=>{
 }
 meteofonction()
 setInterval(meteofonction,3600000);
+
