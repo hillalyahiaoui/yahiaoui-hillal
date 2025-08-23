@@ -40,7 +40,7 @@ const afficherheure =  async ()=>{
     })
 }
 // afficherheure()
-setInterval(afficherheure,1000)
+ setInterval( afficherheure,1000)
 // afficher l'heure---------------------------------
 
 // ----------date--------------------------------
