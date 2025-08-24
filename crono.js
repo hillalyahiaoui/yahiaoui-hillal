@@ -76,7 +76,7 @@ on.addEventListener("click", ()=>{
             background-color:gainsboro;
   width: 95%;
   min-width: 90%;
-  font-size: 0.8rem;
+  font-size: 1rem;
             
         }
         li.show{
@@ -145,4 +145,5 @@ document.querySelector('img').addEventListener('mouseout', ()=>{
     p.classList.remove('pp')
     p.innerHTML=""
 })
+
 
