@@ -30,7 +30,7 @@ nav {
   top: 0;
   background: rgb(229, 229, 248);
   max-width: 1800px;
-  margin: 5px auto;
+  margin: 0px auto;
 }
 
 em {
@@ -65,8 +65,8 @@ main {
 
 .gauche {
   width: 55%;
-  padding: 5px;
-  margin-right: 1pjx;
+  padding:0px 5px;
+  margin-right: 0px;
 }
 
 /*mode nuit-------------------------------*/
@@ -97,11 +97,11 @@ label {
 
 .droite {
   width: 45%;
-  padding: 5px;
+  padding: 0px 5px;
   /* border: 2px solid darkblue; */
   /* box-shadow: -1px 0px 3px 6px rgba(219, 201, 201, 0.486); */
   /* margin-top: 1px; */
-  margin-left: 1pxj;
+  margin-left: 0px;
 }
 tr,
 th {
@@ -725,6 +725,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
