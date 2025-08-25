@@ -446,10 +446,12 @@ const form = document.querySelector("form");
     form.addEventListener("submit", function(e) {
      // Empêche le rechargement automatique de la page
 
-      // Cibler tous les champs
+      setTimeout(() => {
       document.getElementById("nom").value = "";
       document.getElementById("prenom").value = "";
       document.getElementById("area").value = "";
+      },2000)
     })
+
 
 
