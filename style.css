@@ -1,11 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lunasima&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Hentaigana:wght@200..900&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lunasima&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif+Hentaigana:wght@200..900&display=swap");*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+
+
 
 body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Noto Serif Hentaigana", sans-serif;
-  /* font-family: "Roboto"; */
+ /* font-family: "Noto Serif Hentaigana", sans-serif;*/
+font-family: 'Montserrat', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -727,6 +731,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
