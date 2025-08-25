@@ -439,3 +439,16 @@ document.querySelector(".fa-sun").addEventListener('click',()=>{
 meteofonction()
 setInterval(meteofonction,3600000);
 
+
+const form = document.querySelector("form");
+
+    // Ajouter un écouteur sur le submit
+    form.addEventListener("submit", function(e) {
+      e.preventDefault(); // Empêche le rechargement automatique de la page
+
+      // Cibler tous les champs
+      document.getElementById("nom").value = "";
+      document.getElementById("prenom").value = "";
+      document.getElementById("area").value = "";
+    })
+
