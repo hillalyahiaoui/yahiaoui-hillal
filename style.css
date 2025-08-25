@@ -395,11 +395,11 @@ footer h3 {
   .gauche {
     width: 100%;
     order: 2;
-    padding: 5px;
+    padding:0px 5px;
   }
   .droite {
     width: 100%;
-    padding: 5px;
+    padding:0px 5px;
   }
 
   .gauche p {
@@ -505,7 +505,7 @@ footer h3 {
     font-size: 0.5rem;
   }
   td {
-    padding: 8px 4px;
+    padding: 4px 4px;
   }
 
   #likecoeur,
@@ -725,6 +725,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
