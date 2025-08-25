@@ -66,7 +66,7 @@ main {
 .gauche {
   width: 55%;
   padding:0px 5px;
-  margin-right: 0px;
+  margin: 0 auto;
 }
 
 /*mode nuit-------------------------------*/
@@ -101,7 +101,7 @@ label {
   /* border: 2px solid darkblue; */
   /* box-shadow: -1px 0px 3px 6px rgba(219, 201, 201, 0.486); */
   /* margin-top: 1px; */
-  margin-left: 0px;
+  margin: 0 auto;
 }
 tr,
 th {
@@ -173,7 +173,7 @@ td {
 .carte h3 {
   color: blue;
   background-color: rgb(229, 229, 248);
-  padding: 6px;
+  padding: 6px 0px;
   text-align: center;
   color: darkblue;
   font-style: italic;
@@ -396,10 +396,12 @@ footer h3 {
     width: 100%;
     order: 2;
     padding:0px 5px;
+    margin:0 auto;
   }
   .droite {
     width: 100%;
     padding:0px 5px;
+    margin: 0 auto;
   }
 
   .gauche p {
@@ -725,6 +727,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
