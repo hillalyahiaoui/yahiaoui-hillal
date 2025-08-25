@@ -116,7 +116,7 @@ th {
  
 } */
 th {
-  padding: 10px 0px;
+  padding: 10px;
 }
 table tr {
   text-align: left;
@@ -134,7 +134,7 @@ footer h3 {
   font-style: italic;
   color: darkblue;
   background-color: rgb(229, 229, 248);
-  padding: 0px;
+  padding: 10px;
 }
 .tichy p,
 .tagouba p,
@@ -727,6 +727,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
