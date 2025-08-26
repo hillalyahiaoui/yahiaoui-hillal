@@ -31,8 +31,8 @@ const nuit = document.querySelector('#nuit')
     
     //afficher l'heure---------------------------------------
     
-/*const heure = document.querySelector('.heure')
-const afficherheure =  async ()=>{  
+const heure = document.querySelector('.heure')
+/*const afficherheure =  async ()=>{  
  await fetch("http://worldtimeapi.org/api/timezone/Africa/Algiers").then((re)=>re.json()).then((data)=>{
   let time= data.datetime.split("T")[1].split(".")[0];
   heure.innerHTML="<b>"+time.split(':').slice(0,2).join(":")+"</b>"
@@ -462,6 +462,7 @@ const form = document.querySelector("form");
       document.getElementById("area").value = "";
       },2000)
     })
+
 
 
 
