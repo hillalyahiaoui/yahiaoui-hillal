@@ -41,7 +41,7 @@ const heure = document.querySelector('.heure')
 }*/
 // afficherheure()
 // setInterval( afficherheure,1000)
-
+function datte() {
 
   const jours = ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."];
   const d = new Date();
@@ -49,7 +49,8 @@ const heure = document.querySelector('.heure')
   const heures = String(d.getHours()).padStart(2, '0');
   const minutes = String(d.getMinutes()).padStart(2, '0');
   heure.innerHTML= `<b> ${heures}:${minutes}</b>`;
-
+}
+setInterval(datte, 60000);
 
 // afficher l'heure---------------------------------
 
@@ -462,6 +463,7 @@ const form = document.querySelector("form");
       document.getElementById("area").value = "";
       },2000)
     })
+
 
 
 
