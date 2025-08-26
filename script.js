@@ -31,16 +31,26 @@ const nuit = document.querySelector('#nuit')
     
     //afficher l'heure---------------------------------------
     
-const heure = document.querySelector('.heure')
+/*const heure = document.querySelector('.heure')
 const afficherheure =  async ()=>{  
  await fetch("http://worldtimeapi.org/api/timezone/Africa/Algiers").then((re)=>re.json()).then((data)=>{
   let time= data.datetime.split("T")[1].split(".")[0];
   heure.innerHTML="<b>"+time.split(':').slice(0,2).join(":")+"</b>"
   
     })
-}
+}*/
 // afficherheure()
- setInterval( afficherheure,1000)
+// setInterval( afficherheure,1000)
+
+
+  const jours = ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."];
+  const d = new Date();
+  const jour = jours[d.getDay()];
+  const heures = String(d.getHours()).padStart(2, '0');
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  heure.innerHTML= `${jour} ${heures}:${minutes}`;
+
+
 // afficher l'heure---------------------------------
 
 // ----------date--------------------------------
@@ -452,6 +462,7 @@ const form = document.querySelector("form");
       document.getElementById("area").value = "";
       },2000)
     })
+
 
 
 
