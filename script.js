@@ -50,7 +50,7 @@ function datte() {
   const minutes = String(d.getMinutes()).padStart(2, '0');
   heure.innerHTML= `<b> ${heures}:${minutes}</b>`;
 }
-setInterval(datte, 60000);
+setInterval(datte, 1000);
 
 // afficher l'heure---------------------------------
 
@@ -463,6 +463,7 @@ const form = document.querySelector("form");
       document.getElementById("area").value = "";
       },2000)
     })
+
 
 
 
