@@ -45,10 +45,10 @@ const heure = document.querySelector('.heure')
 
   const jours = ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."];
   const d = new Date();
-  const jour = jours[d.getDay()];
+  const jourr = jours[d.getDay()];
   const heures = String(d.getHours()).padStart(2, '0');
   const minutes = String(d.getMinutes()).padStart(2, '0');
-  heure.innerHTML= `${jour} ${heures}:${minutes}`;
+  heure.innerHTML= `${jourr} ${heures}:${minutes}`;
 
 
 // afficher l'heure---------------------------------
@@ -462,6 +462,7 @@ const form = document.querySelector("form");
       document.getElementById("area").value = "";
       },2000)
     })
+
 
 
 
