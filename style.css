@@ -454,7 +454,7 @@ footer h3 {
     height: 200px;
   }
 
-  form input {
+  form input, #area {
     font-size: 0.9rem;
   }
 
@@ -728,6 +728,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
