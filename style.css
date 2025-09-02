@@ -130,7 +130,8 @@ a {
 .tagouba h3,
 .cvhillal h3,
 .cvpdf h3,
-footer h3 {
+footer h3,
+section h3{
   text-align: center;
   font-style: italic;
   color: darkblue;
@@ -487,7 +488,8 @@ footer h3 {
   .tagouba h3,
   .cvhillal h3,
   .cvpdf h3,
-  footer h3 {
+  footer h3,
+  section h3{
     font-size: 0.9rem;
   }
   form {
@@ -728,6 +730,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
