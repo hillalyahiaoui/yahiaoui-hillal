@@ -184,8 +184,11 @@ td {
   box-shadow: -5px -5px 3px rgba(151, 148, 148, 0.541);
 }
 .carte h3 {
-  color: blue;
-  background-color: rgb(229, 229, 248);
+/*  color: blue;
+  background-color: rgb(229, 229, 248);*/
+
+      background: #056162; 
+    color: #fff;
   padding: 6px 0px;
   text-align: center;
   color: darkblue;
@@ -741,6 +744,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
