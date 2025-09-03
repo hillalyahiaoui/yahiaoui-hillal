@@ -191,7 +191,6 @@ td {
     color: #fff;
   padding: 6px 0px;
   text-align: center;
-  color: darkblue;
   font-style: italic;
 }
 
@@ -338,7 +337,7 @@ footer {
 footer h3 {
   text-align: center;
   font-style: italic;
-  color: blue;
+  color: #fff
 }
 
 .texte {
@@ -744,6 +743,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
