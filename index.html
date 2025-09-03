@@ -476,6 +476,8 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
 <script src="./script.js"></script>
 
   <!-- =================== SECTION CITATIONS =================== -->
+
+ <!-- =================== SECTION CITATIONS =================== -->
 <div id="citationBox">
   <button id="closeCitation">✖</button>
   <div class="citation-content">
@@ -502,7 +504,7 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
     padding: 20px;
     font-size: 16px;
     font-weight: bold;
-    transition: all 0.8s ease; /* animation d’apparition */
+    transition: all 0.8s ease; /* animation douce */
     display: none;
     z-index: 9999;
   }
@@ -539,6 +541,7 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
 </style>
 
 <script>
+  // Citations pour 30 jours
   const citations = [
     "Jour 1 : Chaque jour est une nouvelle chance.",
     "Jour 2 : Continue d’avancer, peu importe la vitesse.",
@@ -572,37 +575,79 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
     "Jour 30 : Crois en ton futur radieux."
   ];
 
-  const images = Array.from({length:30}, (_,i)=>`https://source.unsplash.com/400x300/?motivation,day${i+1}`);
+  // 30 images fixes depuis Picsum
+  const images = [
+    "https://picsum.photos/id/1015/600/400",
+    "https://picsum.photos/id/1016/600/400",
+    "https://picsum.photos/id/1018/600/400",
+    "https://picsum.photos/id/1020/600/400",
+    "https://picsum.photos/id/1024/600/400",
+    "https://picsum.photos/id/1025/600/400",
+    "https://picsum.photos/id/1031/600/400",
+    "https://picsum.photos/id/1033/600/400",
+    "https://picsum.photos/id/1035/600/400",
+    "https://picsum.photos/id/1037/600/400",
+    "https://picsum.photos/id/1040/600/400",
+    "https://picsum.photos/id/1041/600/400",
+    "https://picsum.photos/id/1042/600/400",
+    "https://picsum.photos/id/1043/600/400",
+    "https://picsum.photos/id/1044/600/400",
+    "https://picsum.photos/id/1045/600/400",
+    "https://picsum.photos/id/1049/600/400",
+    "https://picsum.photos/id/1050/600/400",
+    "https://picsum.photos/id/1051/600/400",
+    "https://picsum.photos/id/1052/600/400",
+    "https://picsum.photos/id/1053/600/400",
+    "https://picsum.photos/id/1055/600/400",
+    "https://picsum.photos/id/1056/600/400",
+    "https://picsum.photos/id/1057/600/400",
+    "https://picsum.photos/id/1058/600/400",
+    "https://picsum.photos/id/1060/600/400",
+    "https://picsum.photos/id/1062/600/400",
+    "https://picsum.photos/id/1063/600/400",
+    "https://picsum.photos/id/1064/600/400",
+    "https://picsum.photos/id/1065/600/400"
+  ];
 
+  // Déterminer le jour
   const today = new Date();
   const dayNumber = today.getDate();
   const index = (dayNumber - 1) % 30;
 
+  // Sélection des éléments
   const citationBox = document.getElementById("citationBox");
   const citationText = document.getElementById("citationText");
   const closeBtn = document.getElementById("closeCitation");
 
+  // Charger la citation + image du jour
   citationText.textContent = citations[index];
   citationBox.style.backgroundImage = `url('${images[index]}')`;
 
-  // Afficher au scroll
+  let closed = false; // si l’utilisateur ferme avec le X
+
+  // Afficher seulement entre 100px et 200px
   window.addEventListener("scroll", () => {
-    if(window.scrollY > 300){
-      citationBox.classList.add("show");
-    } else {
-      citationBox.classList.remove("show");
+    if (!closed) {
+      if(window.scrollY >= 100 && window.scrollY <= 200){
+        citationBox.classList.add("show");
+      } else {
+        citationBox.classList.remove("show");
+      }
     }
   });
 
-  // Fermer manuellement
+  // Clic sur le X → plus jamais affichée
   closeBtn.addEventListener("click", () => {
+    closed = true;
     citationBox.classList.remove("show");
   });
 </script>
+   
   
 </body>
 
 </html>
+
 
 
 
