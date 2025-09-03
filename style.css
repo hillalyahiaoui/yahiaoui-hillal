@@ -143,8 +143,10 @@ footer h3,
 section h3{
   text-align: center;
   font-style: italic;
-  color: darkblue;
-  background-color: rgb(229, 229, 248);
+/*  color: darkblue;
+  background-color: rgb(229, 229, 248);*/
+      background: #056162; 
+    color: #fff;
   padding: 10px;
 }
 .tichy p,
@@ -739,6 +741,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
