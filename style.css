@@ -38,11 +38,11 @@ nav {
   padding: 15px;
   position: sticky;
   top: 0;
-/*  background: rgb(229, 229, 248);*/
   max-width: 1800px;
-  margin: 0px auto;
+  margin: 0 auto;
   background: #056162; 
-    color: #fff;
+  color: #fff;
+  /*  background: rgb(229, 229, 248);*/
 }
 
 em {
@@ -745,6 +745,7 @@ ul {
   width: 20px;
   height: 20px;
 }
+
 
 
 
