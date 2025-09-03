@@ -474,9 +474,136 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
     <iframe src="pub.html" width="0"  height="0"></iframe>
 </div>
 <script src="./script.js"></script>
+
+  <!-- =================== SECTION CITATIONS =================== -->
+<div id="citationBox">
+  <button id="closeCitation">✖</button>
+  <div class="citation-content">
+    <p id="citationText"></p>
+  </div>
+</div>
+
+<style>
+  /* Bloc citation caché au départ */
+  #citationBox {
+    position: fixed;
+    top: -300px; /* démarre hors écran */
+    right: 5%;
+    transform: translateY(-50%);
+    width: 280px;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    opacity: 0;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.8s ease; /* animation d’apparition */
+    display: none;
+    z-index: 9999;
+  }
+
+  /* Quand on active l’affichage */
+  #citationBox.show {
+    display: block;
+    top: 50%;
+    opacity: 0.95;
+  }
+
+  .citation-content {
+    background: rgba(0,0,0,0.4);
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  /* Bouton X */
+  #closeCitation {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    line-height: 26px;
+    text-align: center;
+  }
+</style>
+
+<script>
+  const citations = [
+    "Jour 1 : Chaque jour est une nouvelle chance.",
+    "Jour 2 : Continue d’avancer, peu importe la vitesse.",
+    "Jour 3 : Le succès commence par un premier pas.",
+    "Jour 4 : Crois en toi et tout est possible.",
+    "Jour 5 : L’effort d’aujourd’hui est la victoire de demain.",
+    "Jour 6 : Les grandes choses prennent du temps.",
+    "Jour 7 : Apprends d’hier, vis pour aujourd’hui.",
+    "Jour 8 : Ta détermination est ta force.",
+    "Jour 9 : Le courage ouvre toutes les portes.",
+    "Jour 10 : Travaille dur en silence, réussis en éclat.",
+    "Jour 11 : Sois fier du chemin parcouru.",
+    "Jour 12 : N’abandonne jamais tes rêves.",
+    "Jour 13 : La persévérance bat le talent.",
+    "Jour 14 : Chaque échec est une leçon cachée.",
+    "Jour 15 : Deviens la meilleure version de toi-même.",
+    "Jour 16 : La discipline mène à la liberté.",
+    "Jour 17 : Transforme tes doutes en énergie.",
+    "Jour 18 : La confiance attire le succès.",
+    "Jour 19 : Rien n’est impossible à un cœur courageux.",
+    "Jour 20 : Le futur appartient à ceux qui osent.",
+    "Jour 21 : Ne regarde pas en arrière, avance.",
+    "Jour 22 : Tes efforts définissent ton avenir.",
+    "Jour 23 : La patience construit les grandes choses.",
+    "Jour 24 : Rêve grand, agis maintenant.",
+    "Jour 25 : Ton potentiel est illimité.",
+    "Jour 26 : Chaque pas te rapproche du but.",
+    "Jour 27 : Le travail constant finit toujours par payer.",
+    "Jour 28 : La confiance est la clé du succès.",
+    "Jour 29 : L’échec n’est pas la fin mais un début.",
+    "Jour 30 : Crois en ton futur radieux."
+  ];
+
+  const images = Array.from({length:30}, (_,i)=>`https://source.unsplash.com/400x300/?motivation,day${i+1}`);
+
+  const today = new Date();
+  const dayNumber = today.getDate();
+  const index = (dayNumber - 1) % 30;
+
+  const citationBox = document.getElementById("citationBox");
+  const citationText = document.getElementById("citationText");
+  const closeBtn = document.getElementById("closeCitation");
+
+  citationText.textContent = citations[index];
+  citationBox.style.backgroundImage = `url('${images[index]}')`;
+
+  // Afficher au scroll
+  window.addEventListener("scroll", () => {
+    if(window.scrollY > 300){
+      citationBox.classList.add("show");
+    } else {
+      citationBox.classList.remove("show");
+    }
+  });
+
+  // Fermer manuellement
+  closeBtn.addEventListener("click", () => {
+    citationBox.classList.remove("show");
+  });
+</script>
+  
 </body>
 
 </html>
+
 
 
 
