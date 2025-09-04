@@ -419,12 +419,12 @@ fetch('https://api.openweathermap.org/data/2.5/weather?q=TICHY&appid=b60535e04e8
 .then((ele)=>{
     console.log(ele)
     blocmeteo.innerHTML=`
-    <p> <b>Ville de  ${ele.name}</b></p>
-     <p> <b>Aujourd'hui</b>   ${date2}</p>
-    <p> <i class="fas fa-sun" style="color: orange; font-size: 25px;"></i> ${ele.main.temp} °C</p>
-    <p>  ${ele.weather[0].description}</p>
-    <p> <b>Humidité </b>${ele.main.humidity} %</p>
-    <p> <b> Vent</b> ${ele.wind.speed} km/h</p>
+    <p style="color: black"> <b>Ville de  ${ele.name}</b></p>
+     <p style="color: black"> <b>Aujourd'hui</b>   ${date2}</p>
+    <p style="color: black" > <i class="fas fa-sun" style="color: orange; font-size: 25px;"></i> ${ele.main.temp} °C</p>
+    <p style="color: black" >  ${ele.weather[0].description}</p>
+    <p  style="color: black"> <b>Humidité </b>${ele.main.humidity} %</p>
+    <p style="color: black" > <b> Vent</b> ${ele.wind.speed} km/h</p>
     `
     
     
@@ -463,6 +463,7 @@ const form = document.querySelector("form");
       document.getElementById("area").value = "";
       },2000)
     })
+
 
 
 
