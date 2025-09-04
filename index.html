@@ -479,6 +479,7 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
 
  <!-- =================== SECTION CITATIONS =================== -->
 <div id="citationBox">
+<h4> chaque jour une citation 🤗</h4>
   <button id="closeCitation">✖</button>
   <div class="citation-content">
     <p id="citationText"></p>
@@ -628,7 +629,7 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
   // Afficher seulement entre 100px et 200px
   window.addEventListener("scroll", () => {
     if (!closed) {
-      if(window.scrollY >= 100 && window.scrollY <= 200){
+      if(window.scrollY >= 100 && window.scrollY <= 300){
         citationBox.classList.add("show");
       } else {
         citationBox.classList.remove("show");
@@ -647,6 +648,7 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
 </body>
 
 </html>
+
 
 
 
