@@ -408,6 +408,107 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
     <i id="cv" class="fa fa-file-pdf">Voir le Cv</i>
     </div>
 </div>
+
+<!-- ===== SECTION CARTE ===== -->
+<section class="carte-experiences">
+  <h2>🌍 Mes expériences dans le monde</h2>
+  <div class="map-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="Carte du monde" class="map">
+
+    <!-- Tagouba -->
+    <div class="point" style="top:54%; left:53%;">
+      <span class="tooltip">
+        <strong>Tagouba, Algérie</strong><br>Études secondaires<br><em>2005 - 2008</em>
+      </span>
+    </div>
+
+    <!-- Tichy -->
+    <div class="point" style="top:53%; left:54%;">
+      <span class="tooltip">
+        <strong>Tichy, Algérie</strong><br>Formation textile<br><em>2010 - 2012</em>
+      </span>
+    </div>
+
+    <!-- Béjaïa -->
+    <div class="point" style="top:52%; left:53%;">
+      <span class="tooltip">
+        <strong>Béjaïa, Algérie</strong><br>Université / Parcours académique<br><em>2008 - 2013</em>
+      </span>
+    </div>
+
+    <!-- Alger -->
+    <div class="point" style="top:50%; left:50%;">
+      <span class="tooltip">
+        <strong>Alger, Algérie</strong><br>Projet textile<br><em>2018 - 2019</em>
+      </span>
+    </div>
+
+    <!-- Mulhouse -->
+    <div class="point" style="top:39%; left:46%;">
+      <span class="tooltip">
+        <strong>Mulhouse, France</strong><br>Master textile<br><em>2014 - 2016</em>
+      </span>
+    </div>
+  </div>
+</section>
+
+<style>
+.carte-experiences {
+  text-align: center;
+  margin: 40px 0;
+}
+.map-container {
+  position: relative;
+  display: inline-block;
+  max-width: 90%;
+}
+.map {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.point {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: red;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,0,0,0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(255,0,0,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); }
+}
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px); /* démarre un peu plus bas */
+  z-index: 10;
+}
+.point:hover .tooltip,
+.point:active .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0); /* remonte doucement */
+}
+</style>
+
+    
     <footer>
         <!-- <div class="trit"></div> -->
 
@@ -648,6 +749,7 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
 </body>
 
 </html>
+
 
 
 
