@@ -746,6 +746,15 @@ ul {
   height: 20px;
 }
 
+.t {
+  height: 8px;
+  background: linear-gradient(to right, #f0f0f0, #d3d3d3, #f0f0f0);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+
+
 
 
 
