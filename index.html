@@ -412,6 +412,220 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
     </div>
 </div>
 
+    <!-- ================= SECTION CARTE CV ================= -->
+<div class="carte">
+  <h2>📍 Mes Localisations</h2>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    .carte {
+      margin: 40px auto;
+      max-width: 900px;
+      text-align: center;
+      padding: 0 10px;
+      position: relative;
+    }
+
+    .carte h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #map {
+      height: 500px;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* ================= LÉGENDE ================= */
+    .legend {
+      background: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .legend h4 {
+      margin: 0 0 5px;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .legend p {
+      margin: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend ul {
+      margin: 5px 0 0 20px;
+      padding: 0;
+      list-style-type: disc;
+    }
+
+    .legend li {
+      cursor: pointer;
+      margin: 3px 0;
+      transition: color 0.2s;
+    }
+
+    .legend li:hover,
+    .legend-item:hover {
+      color: #0078ff;
+      font-weight: bold;
+    }
+
+    /* ================= BOUTON FLOTTANT ================= */
+    .reset-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: #0078ff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 1000;
+    }
+
+    .reset-btn:hover {
+      background: #0056b3;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 768px) {
+      #map {
+        height: 400px;
+      }
+      .legend {
+        font-size: 15px;
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #map {
+        height: 350px;
+      }
+      .carte h2 {
+        font-size: 18px;
+      }
+      .legend {
+        font-size: 16px;
+        line-height: 22px;
+        padding: 14px;
+      }
+      .reset-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+      }
+    }
+  </style>
+
+  <div id="map"></div>
+  <button class="reset-btn" title="Recentrer la carte">📍</button>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // ================= INITIALISATION =================
+    var map = L.map("map").setView([36.75, 5.07], 6);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    // ================= ICONES =================
+    var homeIcon = L.divIcon({ html: '<i class="fa fa-home fa-2x" style="color:blue"></i>', className: "myDivIcon" });
+    var workIcon = L.divIcon({ html: '<i class="fa fa-briefcase fa-2x" style="color:green"></i>', className: "myDivIcon" });
+    var studyIcon = L.divIcon({ html: '<i class="fa fa-graduation-cap fa-2x" style="color:black"></i>', className: "myDivIcon" });
+
+    // ================= MARQUEURS =================
+    var markers = {
+      residence: L.marker([36.6728, 5.2400], { icon: homeIcon }).bindPopup("<b>Résidence</b><br>Village Tagouba, Tichy").addTo(map),
+      travail: L.marker([36.7509, 5.0567], { icon: workIcon }).bindPopup("<b>Travail</b><br>GETEX Béjaïa").addTo(map),
+      etudeBejaia: L.marker([36.7516, 5.0696], { icon: studyIcon }).bindPopup("<b>Études</b><br>Université de Béjaïa - Targa Ouzemour").addTo(map),
+      etudeAlger: L.marker([36.7538, 3.0588], { icon: studyIcon }).bindPopup("<b>Études</b><br>Institut Supérieur de Gestion et Planification - Alger").addTo(map),
+      etudeMulhouse: L.marker([47.7508, 7.3359], { icon: studyIcon }).bindPopup("<b>Études</b><br>École Supérieure d’Ingénieurs Sud Alsace - Mulhouse, France").addTo(map)
+    };
+
+    // Adapter la vue pour montrer tous les points
+    var group = L.featureGroup(Object.values(markers));
+    map.fitBounds(group.getBounds());
+
+    // ================= LÉGENDE INTERACTIVE =================
+    var legend = L.control({ position: "bottomright" });
+
+    legend.onAdd = function(map) {
+      var div = L.DomUtil.create("div", "legend");
+      div.innerHTML = `
+        <h4>Légende</h4>
+        <p class="legend-item" data-type="residence"><i class="fa fa-home" style="color:blue"></i> Résidence (Tichy)</p>
+        <p class="legend-item" data-type="travail"><i class="fa fa-briefcase" style="color:green"></i> Travail (Béjaïa)</p>
+        <p><i class="fa fa-graduation-cap" style="color:black"></i> Études :</p>
+        <ul>
+          <li class="legend-item" data-type="etude-bejaia">Université Béjaïa (Targa Ouzemour)</li>
+          <li class="legend-item" data-type="etude-alger">Institut Supérieur de Gestion, Alger</li>
+          <li class="legend-item" data-type="etude-mulhouse">École d’ingénieurs Sud Alsace, Mulhouse</li>
+        </ul>
+      `;
+      return div;
+    };
+
+    legend.addTo(map);
+
+    // ================= GESTION CLIC SUR LA LÉGENDE =================
+    document.addEventListener("click", function(e) {
+      if (e.target && e.target.closest(".legend-item")) {
+        let type = e.target.closest(".legend-item").dataset.type;
+
+        if (type === "residence") {
+          map.setView([36.6728, 5.2400], 14);
+          markers.residence.openPopup();
+        }
+        if (type === "travail") {
+          map.setView([36.7509, 5.0567], 14);
+          markers.travail.openPopup();
+        }
+        if (type === "etude-bejaia") {
+          map.setView([36.7516, 5.0696], 15);
+          markers.etudeBejaia.openPopup();
+        }
+        if (type === "etude-alger") {
+          map.setView([36.7538, 3.0588], 15);
+          markers.etudeAlger.openPopup();
+        }
+        if (type === "etude-mulhouse") {
+          map.setView([47.7508, 7.3359], 15);
+          markers.etudeMulhouse.openPopup();
+        }
+      }
+    });
+
+    // ================= BOUTON "VOIR TOUT" =================
+    document.querySelector(".reset-btn").addEventListener("click", function() {
+      map.fitBounds(group.getBounds());
+    });
+  </script>
+</div>
+
     
     <footer>
         <!-- <div class="trit"></div> -->
@@ -653,6 +867,7 @@ Outre son chef-lieu Tichy-ville, la commune de Tichy est composée des localité
 </body>
 
 </html>
+
 
 
 
