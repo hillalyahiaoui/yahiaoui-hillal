@@ -30,6 +30,7 @@ section igrame{
 
 /* entete */
 nav {
+  z-index: 100000;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -750,6 +751,7 @@ ul {
 
   margin: 20px 0;
 }
+
 
 
 
