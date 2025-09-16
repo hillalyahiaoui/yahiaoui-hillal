@@ -146,8 +146,8 @@ section h3{
   font-style: italic;
 /*  color: darkblue;
   background-color: rgb(229, 229, 248);*/
-      background: #056162; 
-    color: #fff;
+      /*background: #056162; */
+    color: blue;
   padding: 10px;
 }
 .tichy p,
@@ -751,6 +751,7 @@ ul {
 
   margin: 20px 0;
 }
+
 
 
 
