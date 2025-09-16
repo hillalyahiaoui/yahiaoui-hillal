@@ -39,7 +39,7 @@ nav {
   top: 0;
   max-width: 1800px;
   margin: 0 auto;
-  background:#f8b1d9;
+  background:linear-gradient(90deg, #e91e63, #6a1b9a);
   color: #fff;
   /*  background: rgb(229, 229, 248);*/
 }
@@ -752,6 +752,7 @@ ul {
 
   margin: 20px 0;
 }
+
 
 
 
