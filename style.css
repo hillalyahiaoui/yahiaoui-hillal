@@ -186,9 +186,9 @@ td {
 }
 .carte h3 {
 /*  color: blue;
-  background-color: rgb(229, 229, 248);*/
+  background-color: rgb(229, 229, 248);
 
-     /* background: #056162; */
+ background: #056162; */
     color: blue;
   padding: 6px 0px;
   text-align: center;
@@ -751,6 +751,7 @@ ul {
 
   margin: 20px 0;
 }
+
 
 
 
