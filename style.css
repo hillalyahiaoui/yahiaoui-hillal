@@ -188,8 +188,8 @@ td {
 /*  color: blue;
   background-color: rgb(229, 229, 248);*/
 
-      background: #056162; 
-    color: #fff;
+     /* background: #056162; */
+    color: blue;
   padding: 6px 0px;
   text-align: center;
   font-style: italic;
@@ -751,6 +751,7 @@ ul {
 
   margin: 20px 0;
 }
+
 
 
 
