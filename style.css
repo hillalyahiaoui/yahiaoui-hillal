@@ -470,7 +470,7 @@ footer h3 {
   }
 
   form input, #area {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .droite table {
@@ -504,7 +504,8 @@ footer h3 {
   .cvpdf h3,
   footer h3,
   section h3{
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
   }
   form {
     margin-top: 2px;
@@ -751,6 +752,7 @@ ul {
 
   margin: 20px 0;
 }
+
 
 
 
