@@ -147,7 +147,7 @@ section h3{
 /*  color: darkblue;
   background-color: rgb(229, 229, 248);*/
       /*background: #056162; */
-    color: blue;
+    color: #8B1C42;
   padding: 10px;
 }
 .tichy p,
@@ -189,7 +189,7 @@ td {
   background-color: rgb(229, 229, 248);
 
  background: #056162; */
-    color: blue;
+    color: #8B1C42;
   padding: 6px 0px;
   text-align: center;
   font-style: italic;
@@ -752,6 +752,7 @@ ul {
 
   margin: 20px 0;
 }
+
 
 
 
