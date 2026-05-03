@@ -29,6 +29,60 @@
 
 </head>
 <body>
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// 🔥 remplace par TES infos Firebase
+const firebaseConfig = {
+  apiKey: "XXXX",
+  authDomain: "XXXX",
+  projectId: "XXXX",
+  storageBucket: "XXXX",
+  messagingSenderId: "XXXX",
+  appId: "XXXX"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Ajouter commentaire
+window.addComment = async function() {
+    const name = document.getElementById("name").value;
+    const message = document.getElementById("message").value;
+
+    if(name && message){
+        await addDoc(collection(db, "comments"), {
+            name: name,
+            message: message,
+            date: new Date()
+        });
+
+        loadComments();
+    }
+};
+
+// Charger commentaires
+async function loadComments(){
+    const querySnapshot = await getDocs(collection(db, "comments"));
+    let html = "";
+
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        html += `<p><strong>${data.name}</strong>: ${data.message}</p>`;
+    });
+
+    document.getElementById("commentsList").innerHTML = html;
+}
+
+// Charger au démarrage
+loadComments();
+
+</script>
+
+    
     
     <nav>
         <div class="hr">
