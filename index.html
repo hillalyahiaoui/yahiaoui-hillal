@@ -36,13 +36,17 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // 🔥 remplace par TES infos Firebase
-const firebaseConfig = {
-  apiKey: "XXXX",
-  authDomain: "XXXX",
-  projectId: "XXXX",
-  storageBucket: "XXXX",
-  messagingSenderId: "XXXX",
-  appId: "XXXX"
+
+    const firebaseConfig = {
+  apiKey: "AIzaSyCN_2ykJnRrf0VamKG1dT2fcJ-oFQzqfWU",
+  authDomain: "hillaltchat.firebaseapp.com",
+  databaseURL: "https://hillaltchat-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "hillaltchat",
+// storageBucket: "hillaltchat.firebasestorage.app",
+  storageBucket: "hillaltchat.appspot.com",
+  messagingSenderId: "674583669453",
+  appId: "1:674583669453:web:f2343dee4a4f41901ed784"
+        
 };
 
 const app = initializeApp(firebaseConfig);
