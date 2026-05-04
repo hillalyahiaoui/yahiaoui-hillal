@@ -31,61 +31,7 @@
 <body>
 
 
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-//import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 🔥 remplace par TES infos Firebase
-
-    const firebaseConfig = {
-  apiKey: "AIzaSyCN_2ykJnRrf0VamKG1dT2fcJ-oFQzqfWU",
-  authDomain: "hillaltchat.firebaseapp.com",
-  databaseURL: "https://hillaltchat-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "hillaltchat",
-// storageBucket: "hillaltchat.firebasestorage.app",
-  storageBucket: "hillaltchat.appspot.com",
-  messagingSenderId: "674583669453",
-  appId: "1:674583669453:web:f2343dee4a4f41901ed784"
-        
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// Ajouter commentaire
-window.addComment = async function() {
-    const name = document.getElementById("name").value;
-    const message = document.getElementById("message").value;
-
-    if(name && message){
-        await addDoc(collection(db, "comments"), {
-            name: name,
-            message: message,
-            date: new Date()
-        });
-
-        loadComments();
-    }
-};
-
-// Charger commentaires
-async function loadComments(){
-    const querySnapshot = await getDocs(collection(db, "comments"));
-    let html = "";
-
-    querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        html += `<p><strong>${data.name}</strong>: ${data.message}</p>`;
-    });
-
-    document.getElementById("commentsList").innerHTML = html;
-}
-
-// Charger au démarrage
-loadComments();
-
-</script>
 
     
     
@@ -1157,18 +1103,7 @@ window.onclick = function(event) {
     <input type="submit" id="envoyer" value="Envoyer">
 </form>
 
-<section id="commentsHillal" style="padding:40px; text-align:center;">
 
-<h2>Commentaires</h2>
-
-<input type="text" id="name" placeholder="Votre nom"><br><br>
-<textarea id="message" placeholder="Votre message"></textarea><br><br>
-
-<button onclick="addComment()">Envoyer</button>
-
-<div id="commentsList" style="margin-top:20px;"></div>
-
-</section>
 
     
 
