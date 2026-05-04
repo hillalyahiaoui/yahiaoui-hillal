@@ -1104,7 +1104,123 @@ window.onclick = function(event) {
 </form>
 
 
+<section id="commentaire" style="margin:60px 0; text-align:center;">
 
+<style>
+#commentaire {
+    padding: 40px;
+    background: #1e293b;
+    color: white;
+}
+
+#commentaire .box {
+    max-width: 500px;
+    margin: auto;
+}
+
+#commentaire input,
+#commentaire textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+#commentaire button {
+    background: #22c55e;
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#commentaire .comment {
+    background: #0f172a;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    #commentaire {
+        padding: 20px;
+    }
+}
+</style>
+
+<h2>💬 Commentaires</h2>
+
+<div class="box">
+    <input type="text" id="c_name" placeholder="Votre nom">
+    <textarea id="c_message" placeholder="Votre message..."></textarea>
+    <button id="c_send">Envoyer</button>
+
+    <div id="c_list"></div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+/* 🔴 REMPLACE PAR TES INFOS FIREBASE */
+const firebaseConfig = {
+  apiKey: "XXXX",
+  authDomain: "XXXX",
+  projectId: "XXXX",
+  storageBucket: "XXXX",
+  messagingSenderId: "XXXX",
+  appId: "XXXX"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* Ajouter commentaire */
+document.getElementById("c_send").onclick = async () => {
+    const name = document.getElementById("c_name").value.trim();
+    const message = document.getElementById("c_message").value.trim();
+
+    if(!name || !message){
+        alert("Remplissez tous les champs");
+        return;
+    }
+
+    await addDoc(collection(db, "comments"), {
+        name,
+        message,
+        date: new Date()
+    });
+
+    document.getElementById("c_name").value = "";
+    document.getElementById("c_message").value = "";
+};
+
+/* Affichage temps réel */
+const q = query(collection(db, "comments"), orderBy("date", "desc"));
+
+onSnapshot(q, (snapshot) => {
+    let html = "";
+
+    snapshot.forEach(doc => {
+        const data = doc.data();
+        html += `
+            <div class="comment">
+                <strong>${data.name}</strong><br>
+                ${data.message}
+            </div>
+        `;
+    });
+
+    document.getElementById("c_list").innerHTML = html;
+});
+</script>
+
+</section>
     
 
 <div class="medea">
