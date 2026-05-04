@@ -1201,7 +1201,9 @@ document.getElementById("c_send").onclick = async () => {
 };
 
 /* Affichage temps réel */
-const q = query(collection(db, "comments"), orderBy("date", "desc"));
+//const q = query(collection(db, "comments"), orderBy("date", "desc"));
+    const q = query(collection(db, "comments"));
+    
 
 onSnapshot(q, (snapshot) => {
     let html = "";
