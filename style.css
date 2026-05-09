@@ -277,12 +277,19 @@ input,
   font-size: 1.3em;
 }
 
-#area,input:focus {
+input:focus {
     /* Définit une ligne bleue de 2px solide */
     outline: 2px solid blue; 
     /* Optionnel : ajoute un petit espace entre la bordure et la ligne bleue */
     outline-offset: 2px; 
 }
+textarea:focus {
+    /* Définit une ligne bleue de 2px solide */
+    outline: 2px solid blue; 
+    /* Optionnel : ajoute un petit espace entre la bordure et la ligne bleue */
+    outline-offset: 2px; 
+}
+
 
 
 
