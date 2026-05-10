@@ -1241,84 +1241,18 @@ onSnapshot(q, (snapshot) => {
 </section> -->
 
     
-   <section id="commentaire" style="margin:60px 0; text-align:center;">
+<section id="commentaire" style="margin:60px 0; text-align:center;">
 
 <style>
-#commentaire {
-    padding: 40px;
-    background: #1e293b;
-    color: white;
-    font-family: sans-serif;
-}
-
-#commentaire .box {
-    max-width: 500px;
-    margin: auto;
-}
-
-#commentaire input,
-#commentaire textarea {
-    width: 90%;
-    padding: 10px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 5px;
-}
-
+#commentaire { padding: 40px; background: #1e293b; color: white; font-family: sans-serif; }
+#commentaire .box { max-width: 500px; margin: auto; }
+#commentaire input, #commentaire textarea { width: 90%; padding: 10px; margin: 8px 0; border: none; border-radius: 5px; }
 #commentaire textarea { height: 100px; resize: none; }
-
-#commentaire button#c_send {
-    background: #22c55e;
-    border: none;
-    padding: 12px;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 94%;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-#commentaire .comment {
-    background: #056162; 
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 8px;
-    text-align: left;
-    position: relative;
-    border-left: 4px solid #22c55e;
-}
-
-#commentaire .delete-btn {
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    color: #ff4d4d;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-#commentaire .like-section {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-#commentaire .like-btn {
-    background: rgba(255,255,255,0.1);
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: 0.3s;
-}
-
-#commentaire .like-btn:hover { background: #22c55e; }
-
+#commentaire button#c_send { background: #22c55e; border: none; padding: 12px; color: white; cursor: pointer; border-radius: 5px; width: 94%; font-weight: bold; margin-bottom: 20px; }
+#commentaire .comment { background: #056162; padding: 15px; margin-top: 10px; border-radius: 8px; text-align: left; position: relative; border-left: 4px solid #22c55e; }
+#commentaire .delete-btn { position: absolute; top: 8px; right: 12px; color: #ff4d4d; cursor: pointer; font-weight: bold; font-size: 1.2em; }
+#commentaire .like-section { margin-top: 10px; display: flex; align-items: center; gap: 8px; }
+#commentaire .like-btn { background: rgba(255,255,255,0.1); border: none; color: white; padding: 5px 10px; border-radius: 20px; cursor: pointer; font-size: 0.9em; }
 @media (max-width: 480px) { #commentaire { padding: 20px; } }
 </style>
 
@@ -1328,32 +1262,13 @@ onSnapshot(q, (snapshot) => {
     <input type="text" id="c_name" placeholder="Votre nom">
     <textarea id="c_message" placeholder="Votre Commentaire..."></textarea>
     <button id="c_send">Publier le commentaire</button>
-
     <div id="c_list"></div>
 </div>
 
 <script type="module">
-// LES LIENS DOIVENT ÊTRE EXACTEMENT COMME CECI :
+// LIENS COMPLETS INDISPENSABLES
 import { initializeApp } from "https://gstatic.com";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, deleteDoc, updateDoc, increment } from "https://gstatic.com";
-
-// ATTENTION : Pour Firestore, le lien se termine par firebase-firestore.js
-import { } from "https://gstatic.com"; 
-// Version simplifiée pour éviter les erreurs d'import multiples :
-const firestoreUrl = "https://gstatic.com";
-import { 
-    getFirestore as getFS, 
-    collection as coll, 
-    addDoc as add, 
-    onSnapshot as onSnap, 
-    query as qry, 
-    orderBy as ord, 
-    serverTimestamp as time, 
-    doc as docRef, 
-    deleteDoc as del, 
-    updateDoc as upd, 
-    increment as inc 
-} from "https://gstatic.com";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCN_2ykJnRrf0VamKG1dT2fcJ-oFQzqfWU",
@@ -1365,8 +1280,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFS(app);
-
+const db = getFirestore(app);
 const ADMIN_PASSWORD = "1234"; 
 const forbiddenWords = ["merde", "con", "salope", "fdp", "putain", "fuck", "shit"];
 
@@ -1379,43 +1293,39 @@ function filterText(text) {
     return cleanText;
 }
 
-/* Publier */
 document.getElementById("c_send").onclick = async () => {
     let name = document.getElementById("c_name").value.trim();
     let message = document.getElementById("c_message").value.trim();
     if(!name || !message) return alert("Champs vides !");
     try {
-        await add(coll(db, "comments"), {
+        await addDoc(collection(db, "comments"), {
             name: filterText(name),
             message: filterText(message),
-            date: time(),
+            date: serverTimestamp(),
             likes: 0
         });
         document.getElementById("c_name").value = "";
         document.getElementById("c_message").value = "";
-    } catch (e) { console.error(e); }
+    } catch (e) { alert("Erreur : " + e.message); }
 };
 
-/* Liker */
 window.likeComment = async (id) => {
-    await upd(docRef(db, "comments", id), { likes: inc(1) });
+    await updateDoc(doc(db, "comments", id), { likes: increment(1) });
 };
 
-/* Supprimer */
 window.deleteComment = async (id) => {
     if (prompt("Code admin :") === ADMIN_PASSWORD) {
-        await del(docRef(db, "comments", id));
+        await deleteDoc(doc(db, "comments", id));
     }
 };
 
-/* Affichage */
-const q = qry(coll(db, "comments"), ord("date", "desc"));
-onSnap(q, (snapshot) => {
+const q = query(collection(db, "comments"), orderBy("date", "desc"));
+onSnapshot(q, (snapshot) => {
     let html = "";
     snapshot.forEach(cDoc => {
         const data = cDoc.data();
         const id = cDoc.id;
-        let dateStr = "À l'instant";
+        let dateStr = "Envoi...";
         if (data.date) {
             const d = data.date.toDate();
             dateStr = d.toLocaleDateString('fr-FR') + " à " + d.toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
@@ -1435,10 +1345,12 @@ onSnap(q, (snapshot) => {
             </div>`;
     });
     document.getElementById("c_list").innerHTML = html;
+}, (err) => {
+    console.error("Firebase Error:", err);
 });
 </script>
-
 </section>
+
 
  
     
