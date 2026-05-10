@@ -1333,13 +1333,31 @@ onSnapshot(q, (snapshot) => {
 </div>
 
 <script type="module">
-// RÉPARATION DES LIENS FIREBASE
+// LES LIENS DOIVENT ÊTRE EXACTEMENT COMME CECI :
 import { initializeApp } from "https://gstatic.com";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, deleteDoc, updateDoc, increment } from "https://gstatic.com";
 
+// ATTENTION : Pour Firestore, le lien se termine par firebase-firestore.js
+import { } from "https://gstatic.com"; 
+// Version simplifiée pour éviter les erreurs d'import multiples :
+const firestoreUrl = "https://gstatic.com";
+import { 
+    getFirestore as getFS, 
+    collection as coll, 
+    addDoc as add, 
+    onSnapshot as onSnap, 
+    query as qry, 
+    orderBy as ord, 
+    serverTimestamp as time, 
+    doc as docRef, 
+    deleteDoc as del, 
+    updateDoc as upd, 
+    increment as inc 
+} from "https://gstatic.com";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCN_2ykJnRrf0VamKG1dT2fcJ-oFQzqfWU",
-  authDomain: "hillaltchat.firebaseapp.com", // RÉPARÉ
+  authDomain: "hillaltchat.firebaseapp.com",
   projectId: "hillaltchat",
   storageBucket: "hillaltchat.firebasestorage.app",
   messagingSenderId: "674583669453",
@@ -1347,7 +1365,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = getFS(app);
 
 const ADMIN_PASSWORD = "1234"; 
 const forbiddenWords = ["merde", "con", "salope", "fdp", "putain", "fuck", "shit"];
@@ -1365,53 +1383,43 @@ function filterText(text) {
 document.getElementById("c_send").onclick = async () => {
     let name = document.getElementById("c_name").value.trim();
     let message = document.getElementById("c_message").value.trim();
-
     if(!name || !message) return alert("Champs vides !");
-
     try {
-        await addDoc(collection(db, "comments"), {
+        await add(coll(db, "comments"), {
             name: filterText(name),
             message: filterText(message),
-            date: serverTimestamp(),
+            date: time(),
             likes: 0
         });
         document.getElementById("c_name").value = "";
         document.getElementById("c_message").value = "";
-    } catch (e) {
-        console.error("Erreur d'envoi: ", e);
-    }
+    } catch (e) { console.error(e); }
 };
 
 /* Liker */
 window.likeComment = async (id) => {
-    const commentRef = doc(db, "comments", id);
-    await updateDoc(commentRef, {
-        likes: increment(1)
-    });
+    await upd(docRef(db, "comments", id), { likes: inc(1) });
 };
 
 /* Supprimer */
 window.deleteComment = async (id) => {
     if (prompt("Code admin :") === ADMIN_PASSWORD) {
-        await deleteDoc(doc(db, "comments", id));
+        await del(docRef(db, "comments", id));
     }
 };
 
 /* Affichage */
-// Note : Si rien ne s'affiche, vérifiez la console (F12) pour créer l'index Firebase
-const q = query(collection(db, "comments"), orderBy("date", "desc"));
-onSnapshot(q, (snapshot) => {
+const q = qry(coll(db, "comments"), ord("date", "desc"));
+onSnap(q, (snapshot) => {
     let html = "";
     snapshot.forEach(cDoc => {
         const data = cDoc.data();
         const id = cDoc.id;
-        
         let dateStr = "À l'instant";
         if (data.date) {
             const d = data.date.toDate();
             dateStr = d.toLocaleDateString('fr-FR') + " à " + d.toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
         }
-
         html += `
             <div class="comment">
                 <span class="delete-btn" onclick="deleteComment('${id}')">×</span>
@@ -1420,21 +1428,18 @@ onSnapshot(q, (snapshot) => {
                     <small style="color: #cbd5e1; font-size: 0.7em;">${dateStr}</small>
                 </div>
                 <div style="word-wrap: break-word;">${data.message}</div>
-                
                 <div class="like-section">
                     <button class="like-btn" onclick="likeComment('${id}')">👍 J'aime</button>
                     <span style="font-size:0.9em;">${data.likes || 0}</span>
                 </div>
-            </div>
-        `;
+            </div>`;
     });
     document.getElementById("c_list").innerHTML = html;
-}, (error) => {
-    console.log("Erreur Snapshot (possible index manquant) : ", error);
 });
 </script>
 
 </section>
+
  
     
 
