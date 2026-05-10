@@ -1227,7 +1227,7 @@ onSnapshot(q, (snapshot) => {
         const data = doc.data();
         html += `
             <div class="comment">
-                <strong>${data.name}</strong><br>
+                <strong style="color: gold;">${data.name}</strong><br>
                 ${data.message}
             </div>
         `;
