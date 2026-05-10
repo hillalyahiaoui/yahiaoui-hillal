@@ -1240,7 +1240,8 @@ onSnapshot(q, (snapshot) => {
 
 </section> -->
 
-    <section id="commentaire" style="margin:60px 0; text-align:center;">
+    
+   <section id="commentaire" style="margin:60px 0; text-align:center;">
 
 <style>
 #commentaire {
@@ -1332,12 +1333,13 @@ onSnapshot(q, (snapshot) => {
 </div>
 
 <script type="module">
+// RÉPARATION DES LIENS FIREBASE
 import { initializeApp } from "https://gstatic.com";
 import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, deleteDoc, updateDoc, increment } from "https://gstatic.com";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCN_2ykJnRrf0VamKG1dT2fcJ-oFQzqfWU",
-  authDomain: "://firebaseapp.com",
+  authDomain: "hillaltchat.firebaseapp.com", // RÉPARÉ
   projectId: "hillaltchat",
   storageBucket: "hillaltchat.firebasestorage.app",
   messagingSenderId: "674583669453",
@@ -1366,26 +1368,29 @@ document.getElementById("c_send").onclick = async () => {
 
     if(!name || !message) return alert("Champs vides !");
 
-    await addDoc(collection(db, "comments"), {
-        name: filterText(name),
-        message: filterText(message),
-        date: serverTimestamp(),
-        likes: 0 // Initialisation des likes
-    });
-
-    document.getElementById("c_name").value = "";
-    document.getElementById("c_message").value = "";
+    try {
+        await addDoc(collection(db, "comments"), {
+            name: filterText(name),
+            message: filterText(message),
+            date: serverTimestamp(),
+            likes: 0
+        });
+        document.getElementById("c_name").value = "";
+        document.getElementById("c_message").value = "";
+    } catch (e) {
+        console.error("Erreur d'envoi: ", e);
+    }
 };
 
 /* Liker */
 window.likeComment = async (id) => {
     const commentRef = doc(db, "comments", id);
     await updateDoc(commentRef, {
-        likes: increment(1) // Augmente de 1 de façon sécurisée
+        likes: increment(1)
     });
 };
 
-/* Supprimer (Admin) */
+/* Supprimer */
 window.deleteComment = async (id) => {
     if (prompt("Code admin :") === ADMIN_PASSWORD) {
         await deleteDoc(doc(db, "comments", id));
@@ -1393,6 +1398,7 @@ window.deleteComment = async (id) => {
 };
 
 /* Affichage */
+// Note : Si rien ne s'affiche, vérifiez la console (F12) pour créer l'index Firebase
 const q = query(collection(db, "comments"), orderBy("date", "desc"));
 onSnapshot(q, (snapshot) => {
     let html = "";
@@ -1400,7 +1406,7 @@ onSnapshot(q, (snapshot) => {
         const data = cDoc.data();
         const id = cDoc.id;
         
-        let dateStr = "...";
+        let dateStr = "À l'instant";
         if (data.date) {
             const d = data.date.toDate();
             dateStr = d.toLocaleDateString('fr-FR') + " à " + d.toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
@@ -1423,11 +1429,13 @@ onSnapshot(q, (snapshot) => {
         `;
     });
     document.getElementById("c_list").innerHTML = html;
+}, (error) => {
+    console.log("Erreur Snapshot (possible index manquant) : ", error);
 });
 </script>
 
-    </section>
-    
+</section>
+ 
     
 
 <div class="medea">
