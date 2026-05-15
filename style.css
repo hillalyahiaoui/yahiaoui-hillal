@@ -689,12 +689,13 @@ ul {
   background-color: rgb(117, 68, 167);
   padding: 10px;
   position: absolute;
-  top: 30px;
+  top: 50px;
   right: 0;
   display: none;
-  width: 100px;
-  height: 160px;
+  width: 130px;
+  height: 180px;
   border-radius: 5px;
+  transition:0.5s
 }
 #menu {
   cursor: pointer;
