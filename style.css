@@ -695,7 +695,7 @@ ul {
   width: 130px;
   height: 180px;
   border-radius: 5px;
-  transition:0.5s
+    transition: opacity 0.4s ease, visibility 0.4s ease; 
 }
 #menu {
   cursor: pointer;
