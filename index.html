@@ -871,7 +871,6 @@ window.onclick = function(event) {
 <section id="realisations">
 
 <style>
-/* ===================== BASE ===================== */
 #realisations {
   padding: 60px 15px;
   background: #0f172a;
@@ -884,7 +883,7 @@ window.onclick = function(event) {
   margin: auto;
 }
 
-/* ===================== HEADER ===================== */
+/* HEADER */
 .accordion-header {
   display: flex;
   justify-content: space-between;
@@ -910,27 +909,28 @@ window.onclick = function(event) {
   font-size: 20px;
 }
 
-/* ===================== CONTENT ===================== */
+/* CONTENT */
 .accordion-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.6s ease;
 }
 
+/* TITRES SECTIONS */
 .block-title {
-  margin: 25px 0 15px;
+  margin: 30px 0 15px;
   color: #38bdf8;
   font-size: 18px;
 }
 
-/* ===================== GRID ===================== */
+/* GRID */
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-/* ===================== CARD ===================== */
+/* CARD */
 .card {
   background: #1e293b;
   padding: 18px;
@@ -959,37 +959,21 @@ window.onclick = function(event) {
   font-size: 14px;
 }
 
-/* ===================== RESPONSIVE TABLET ===================== */
+/* RESPONSIVE TABLET */
 @media (max-width: 992px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .accordion-header h2 {
-    font-size: 20px;
-  }
 }
 
-/* ===================== RESPONSIVE MOBILE ===================== */
+/* RESPONSIVE MOBILE */
 @media (max-width: 600px) {
   .cards {
     grid-template-columns: 1fr;
   }
 
-  .accordion-header {
-    padding: 15px;
-  }
-
   .accordion-header h2 {
     font-size: 18px;
-  }
-
-  .card {
-    padding: 15px;
-  }
-
-  .card ul li {
-    font-size: 13px;
   }
 }
 </style>
@@ -1005,6 +989,7 @@ window.onclick = function(event) {
   <!-- CONTENT -->
   <div class="accordion-content" id="content">
 
+    <!-- ================= REALISATIONS ================= -->
     <h3 class="block-title">🏭 Réalisations Professionnelles</h3>
 
     <div class="cards">
@@ -1012,41 +997,52 @@ window.onclick = function(event) {
       <div class="card">
         <h4>Gestion Technique Textile</h4>
         <ul>
-          <li>Supervision de production</li>
-          <li>Coordination des équipes</li>
-          <li>Suivi des performances</li>
+          <li>Supervision des opérations de production textile</li>
+          <li>Coordination des activités techniques de fabrication</li>
+          <li>Suivi des équipes de production</li>
+          <li>Suivi des performances industrielles</li>
+          <li>Amélioration du rendement industriel</li>
+          <li>Gestion des problèmes techniques en atelier</li>
+          <li>Suivi qualité des produits finis</li>
         </ul>
       </div>
 
       <div class="card">
         <h4>Organisation & Performance</h4>
         <ul>
-          <li>Analyse des retards</li>
-          <li>Optimisation des flux</li>
-          <li>Suivi KPI</li>
+          <li>Analyse et suivi des retards de production</li>
+          <li>Optimisation des flux de travail</li>
+          <li>Suivi des indicateurs de performance (KPI)</li>
+          <li>Amélioration continue des processus</li>
+          <li>Organisation des opérations industrielles</li>
         </ul>
       </div>
 
       <div class="card">
         <h4>Projet Atelier 540 m²</h4>
         <ul>
-          <li>Étude technico-économique</li>
-          <li>Implantation machines</li>
-          <li>Flux production</li>
+          <li>Étude technico-économique d’un atelier de confection</li>
+          <li>Organisation des postes de travail</li>
+          <li>Planification des flux de production</li>
+          <li>Implantation des machines</li>
+          <li>Étude de l’éclairage industriel</li>
+          <li>Spécialité : tenue de travail</li>
         </ul>
       </div>
 
       <div class="card">
         <h4>Développement Web</h4>
         <ul>
-          <li>HTML / CSS / JS</li>
-          <li>Portfolio personnel</li>
-          <li>GitHub Pages</li>
+          <li>Création de portfolio personnel</li>
+          <li>Développement HTML / CSS / JavaScript</li>
+          <li>Publication via GitHub Pages</li>
+          <li>Projets web interactifs</li>
         </ul>
       </div>
 
     </div>
 
+    <!-- ================= MANAGEMENT ================= -->
     <h3 class="block-title">🧠 Méthodes de Management Industriel</h3>
 
     <div class="cards">
@@ -1055,15 +1051,19 @@ window.onclick = function(event) {
         <h4>Lean Management</h4>
         <ul>
           <li>Élimination des gaspillages</li>
-          <li>Amélioration continue</li>
+          <li>Amélioration continue (Kaizen)</li>
+          <li>Optimisation des flux</li>
+          <li>Réduction des délais et coûts</li>
         </ul>
       </div>
 
       <div class="card">
-        <h4>OST</h4>
+        <h4>Organisation Scientifique du Travail (OST)</h4>
         <ul>
-          <li>Analyse scientifique du travail</li>
-          <li>Standardisation</li>
+          <li>Analyse scientifique des tâches</li>
+          <li>Standardisation des méthodes</li>
+          <li>Chronométrage des opérations</li>
+          <li>Optimisation des gestes de travail</li>
         </ul>
       </div>
 
@@ -1071,7 +1071,9 @@ window.onclick = function(event) {
         <h4>Taylorisme</h4>
         <ul>
           <li>Division du travail</li>
-          <li>Spécialisation</li>
+          <li>Spécialisation des tâches</li>
+          <li>Contrôle du temps</li>
+          <li>Productivité maximale</li>
         </ul>
       </div>
 
@@ -1080,6 +1082,8 @@ window.onclick = function(event) {
         <ul>
           <li>Production en série</li>
           <li>Travail à la chaîne</li>
+          <li>Standardisation des produits</li>
+          <li>Réduction des coûts</li>
         </ul>
       </div>
 
@@ -1087,7 +1091,9 @@ window.onclick = function(event) {
         <h4>Toyotisme</h4>
         <ul>
           <li>Juste-à-temps</li>
-          <li>Flexibilité</li>
+          <li>Réduction des stocks</li>
+          <li>Qualité intégrée</li>
+          <li>Flexibilité de production</li>
         </ul>
       </div>
 
@@ -1113,8 +1119,6 @@ function toggleSection() {
 </script>
 
 </section>
-
-
          
 
          
