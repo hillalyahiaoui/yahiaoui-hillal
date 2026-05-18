@@ -906,22 +906,21 @@ window.onclick = function(event) {
 }
 
 .arrow {
+  font-size: 20px;
   transition: 0.3s;
 }
 
-/* CONTENT WRAPPER */
+/* CONTENT FIX (IMPORTANT) */
 .accordion-content {
-  overflow: hidden;
   max-height: 0;
+  overflow: hidden;
   opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.6s ease;
+  transition: max-height 0.6s ease, opacity 0.4s ease;
 }
 
 /* OPEN STATE */
 .accordion-content.open {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* TITRES */
@@ -947,7 +946,7 @@ window.onclick = function(event) {
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   background: #243247;
 }
 
@@ -966,13 +965,22 @@ window.onclick = function(event) {
   font-size: 14px;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE TABLET */
 @media (max-width: 992px) {
-  .cards { grid-template-columns: repeat(2, 1fr); }
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
+/* MOBILE */
 @media (max-width: 600px) {
-  .cards { grid-template-columns: 1fr; }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .accordion-header h2 {
+    font-size: 18px;
+  }
 }
 </style>
 
@@ -981,7 +989,7 @@ window.onclick = function(event) {
   <!-- HEADER -->
   <div class="accordion-header" onclick="toggleSection()">
     <h2>Réalisations & Management Industriel</h2>
-    <span id="arrow">▼</span>
+    <span class="arrow" id="arrow">▼</span>
   </div>
 
   <!-- CONTENT -->
@@ -994,19 +1002,21 @@ window.onclick = function(event) {
       <div class="card">
         <h4>Gestion Technique Textile</h4>
         <ul>
-          <li>Supervision production</li>
-          <li>Coordination équipes</li>
-          <li>Suivi performances</li>
-          <li>Amélioration rendement</li>
+          <li>Supervision de production textile</li>
+          <li>Coordination des équipes</li>
+          <li>Suivi des performances</li>
+          <li>Amélioration du rendement</li>
+          <li>Gestion technique atelier</li>
         </ul>
       </div>
 
       <div class="card">
         <h4>Organisation & Performance</h4>
         <ul>
-          <li>Analyse retards</li>
-          <li>Optimisation flux</li>
+          <li>Analyse des retards</li>
+          <li>Optimisation des flux</li>
           <li>Suivi KPI</li>
+          <li>Amélioration continue</li>
         </ul>
       </div>
 
@@ -1014,8 +1024,9 @@ window.onclick = function(event) {
         <h4>Projet Atelier 540 m²</h4>
         <ul>
           <li>Étude technico-économique</li>
+          <li>Organisation des postes</li>
           <li>Implantation machines</li>
-          <li>Organisation atelier</li>
+          <li>Flux de production</li>
         </ul>
       </div>
 
@@ -1037,16 +1048,16 @@ window.onclick = function(event) {
       <div class="card">
         <h4>Lean Management</h4>
         <ul>
-          <li>Élimination gaspillages</li>
+          <li>Élimination des gaspillages</li>
           <li>Amélioration continue</li>
-          <li>Optimisation flux</li>
+          <li>Optimisation des flux</li>
         </ul>
       </div>
 
       <div class="card">
         <h4>OST</h4>
         <ul>
-          <li>Analyse scientifique travail</li>
+          <li>Analyse scientifique du travail</li>
           <li>Standardisation</li>
           <li>Chronométrage</li>
         </ul>
@@ -1055,7 +1066,7 @@ window.onclick = function(event) {
       <div class="card">
         <h4>Taylorisme</h4>
         <ul>
-          <li>Division travail</li>
+          <li>Division du travail</li>
           <li>Spécialisation</li>
           <li>Productivité</li>
         </ul>
@@ -1065,7 +1076,7 @@ window.onclick = function(event) {
         <h4>Fordisme</h4>
         <ul>
           <li>Production en série</li>
-          <li>Chaîne de montage</li>
+          <li>Travail à la chaîne</li>
           <li>Standardisation</li>
         </ul>
       </div>
@@ -1096,7 +1107,12 @@ function toggleSection() {
     arrow.innerHTML = "▼";
   } else {
     content.classList.add("open");
-    content.style.maxHeight = content.scrollHeight + "px";
+
+    // IMPORTANT FIX : laisse le DOM se calculer
+    setTimeout(() => {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }, 10);
+
     arrow.innerHTML = "▲";
   }
 }
