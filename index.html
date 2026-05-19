@@ -910,17 +910,19 @@ window.onclick = function(event) {
   transition: 0.3s;
 }
 
-/* CONTENT FIX */
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.5s ease-out, opacity 0.4s ease;
+/* NOUVELLE METHODE ACCORDEON SANS SCRIPT DE HAUTEUR */
+.accordion-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s ease-out;
 }
 
-/* OPEN STATE */
-.accordion-content.open {
-  opacity: 1;
+.accordion-wrapper.open {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content {
+  overflow: hidden;
 }
 
 /* TITRES */
@@ -993,129 +995,130 @@ window.onclick = function(event) {
     <span class="arrow" id="arrow">▼</span>
   </div>
 
-  <!-- CONTENT -->
-  <div class="accordion-content" id="content">
+  <!-- WRAPPER DE REGLAGE DU BUG -->
+  <div class="accordion-wrapper" id="wrapper">
+    <div class="accordion-content">
 
-    <h3 class="block-title">🏭 Réalisations Professionnelles</h3>
+      <h3 class="block-title">🏭 Réalisations Professionnelles</h3>
 
-    <div class="cards">
+      <div class="cards">
 
-      <div class="card">
-        <h4>Gestion Technique Textile</h4>
-        <ul>
-          <li>Supervision de production textile</li>
-          <li>Coordination des équipes</li>
-          <li>Suivi des performances</li>
-          <li>Amélioration du rendement</li>
-          <li>Gestion technique atelier</li>
-        </ul>
+        <div class="card">
+          <h4>Gestion Technique Textile</h4>
+          <ul>
+            <li>Supervision de production textile</li>
+            <li>Coordination des équipes</li>
+            <li>Suivi des performances</li>
+            <li>Amélioration du rendement</li>
+            <li>Gestion technique atelier</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Organisation & Performance</h4>
+          <ul>
+            <li>Analyse des retards</li>
+            <li>Optimisation des flux</li>
+            <li>Suivi KPI</li>
+            <li>Amélioration continue</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Projet Atelier 540 m²</h4>
+          <ul>
+            <li>Étude technico-économique</li>
+            <li>Organisation des postes</li>
+            <li>Implantation machines</li>
+            <li>Flux de production</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Développement Web</h4>
+          <ul>
+            <li>HTML / CSS / JS</li>
+            <li>Portfolio personnel</li>
+            <li>GitHub Pages</li>
+          </ul>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h4>Organisation & Performance</h4>
-        <ul>
-          <li>Analyse des retards</li>
-          <li>Optimisation des flux</li>
-          <li>Suivi KPI</li>
-          <li>Amélioration continue</li>
-        </ul>
-      </div>
+      <h3 class="block-title">🧠 Méthodes de Management Industriel</h3>
 
-      <div class="card">
-        <h4>Projet Atelier 540 m²</h4>
-        <ul>
-          <li>Étude technico-économique</li>
-          <li>Organisation des postes</li>
-          <li>Implantation machines</li>
-          <li>Flux de production</li>
-        </ul>
-      </div>
+      <div class="cards">
 
-      <div class="card">
-        <h4>Développement Web</h4>
-        <ul>
-          <li>HTML / CSS / JS</li>
-          <li>Portfolio personnel</li>
-          <li>GitHub Pages</li>
-        </ul>
+        <div class="card">
+          <h4>Lean Management</h4>
+          <ul>
+            <li>Élimination des gaspillages</li>
+            <li>Amélioration continue</li>
+            <li>Optimisation des flux</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>OST</h4>
+          <ul>
+            <li>Analyse scientifique du travail</li>
+            <li>Standardisation</li>
+            <li>Chronométrage</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Taylorisme</h4>
+          <ul>
+            <li>Division du travail</li>
+            <li>Spécialisation</li>
+            <li>Productivité</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Fordisme</h4>
+          <ul>
+            <li>Production en série</li>
+            <li>Travail à la chaîne</li>
+            <li>Standardisation</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Toyotisme</h4>
+          <ul>
+            <li>Juste-à-temps</li>
+            <li>Flexibilité</li>
+            <li>Qualité intégrée</li>
+          </ul>
+        </div>
+
       </div>
 
     </div>
-
-    <h3 class="block-title">🧠 Méthodes de Management Industriel</h3>
-
-    <div class="cards">
-
-      <div class="card">
-        <h4>Lean Management</h4>
-        <ul>
-          <li>Élimination des gaspillages</li>
-          <li>Amélioration continue</li>
-          <li>Optimisation des flux</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h4>OST</h4>
-        <ul>
-          <li>Analyse scientifique du travail</li>
-          <li>Standardisation</li>
-          <li>Chronométrage</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h4>Taylorisme</h4>
-        <ul>
-          <li>Division du travail</li>
-          <li>Spécialisation</li>
-          <li>Productivité</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h4>Fordisme</h4>
-        <ul>
-          <li>Production en série</li>
-          <li>Travail à la chaîne</li>
-          <li>Standardisation</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h4>Toyotisme</h4>
-        <ul>
-          <li>Juste-à-temps</li>
-          <li>Flexibilité</li>
-          <li>Qualité intégrée</li>
-        </ul>
-      </div>
-
-    </div>
-
   </div>
 
 </div>
 
 <script>
 function toggleSection() {
-  const content = document.getElementById("content");
+  const wrapper = document.getElementById("wrapper");
   const arrow = document.getElementById("arrow");
 
-  if (content.classList.contains("open")) {
-    content.style.maxHeight = "0px";
-    content.classList.remove("open");
+  if (wrapper.classList.contains("open")) {
+    wrapper.classList.remove("open");
     arrow.innerHTML = "▼";
   } else {
-    content.classList.add("open");
-    content.style.maxHeight = content.scrollHeight + "px";
+    wrapper.classList.add("open");
     arrow.innerHTML = "▲";
   }
 }
 </script>
 
 </section>
-      
+
+
 
          
      </div>
