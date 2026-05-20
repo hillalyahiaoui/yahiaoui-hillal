@@ -1254,21 +1254,28 @@ window.onclick = function(event) {
             transform: rotate(180deg);
         }
 
-        .card-list {
-            margin: 0;
-            padding: 15px 20px 20px 40px;
-            color: var(--text-dark);
-        }
+        
 
-        .card-list li {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 8px;
-        }
+        /* Ce code cible uniquement les listes de la section réalisation */
+.realisations-section .card-list {
+    margin: 0;
+    padding: 15px 20px 20px 20px;
+    color: var(--text-dark);
+    /* 1. On réactive la puce ronde */
+    list-style-type: disc !important; 
+    /* 2. On pousse la puce à l'intérieur de la carte pour qu'elle ne soit pas masquée par l'accordéon */
+    list-style-position: inside !important; 
+}
 
-        .card-list li:last-child {
-            margin-bottom: 0;
-        }
+.realisations-section .card-list li {
+    /* 3. On force le comportement d'un élément de liste */
+    display: list-item !important; 
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-align: left;
+}
+        
 
         @media (max-width: 768px) {
             .realisations-section {
