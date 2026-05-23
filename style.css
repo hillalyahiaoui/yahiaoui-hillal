@@ -305,7 +305,7 @@ textarea:focus {
 }
 form input,
 #area {
-  outline: 1px solid turquoise;
+  outline: 1px solid blue;
 }
 
 .contact a {
