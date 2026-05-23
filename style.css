@@ -118,7 +118,7 @@ label {
 }
 tr,
 th {
-  background-color: gainsboro;
+  background-color: #D9FDD3; 
   /* border: 0.5px solid black; */
 }
 /* table tr,
