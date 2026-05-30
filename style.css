@@ -421,9 +421,10 @@ footer h3 {
   .phototagouba img {
     width: 100%;
     height: 220px;
-     margin: 0;
+     margin: 0 auto;
   padding: 0;
   box-shadow: none !important;
+    border-radius: 0px !important;
   }
   img {
     width: 140px;
